@@ -4,14 +4,13 @@ import com.chielokacodes.userorgapp.dto.OrgRequest;
 import com.chielokacodes.userorgapp.dto.userToOrg.UserReq;
 import com.chielokacodes.userorgapp.exeption.ErrorResponse;
 import com.chielokacodes.userorgapp.exeption.SuccessResponse;
-import org.springframework.security.core.userdetails.UserDetails;
 
 public interface OrgService {
-    SuccessResponse getOrganisations(UserDetails userDetails);
+    SuccessResponse getOrganisations();
 
-    SuccessResponse getUserOrganisation(UserDetails userDetails, Long orgId);
+    SuccessResponse getUserOrganisation(Long orgId);
 
-    SuccessResponse createOrganisationByUser(OrgRequest orgRequest) throws ErrorResponse;
+    Object createOrganisationByUser(OrgRequest orgRequest) throws ErrorResponse;
 
-    SuccessResponse putUserInOrg(UserReq userReq, Long orgId) throws ErrorResponse;
+    Object putUserInOrg(UserReq userReq, Long orgId) throws ErrorResponse;
 }

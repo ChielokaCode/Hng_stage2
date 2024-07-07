@@ -68,20 +68,20 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             return validationResponse; // Return validation errors directly
         }
 
-            User user = new User();
-            user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
-            user.setFirstName(signupRequest.getFirstName());
-            user.setLastName(signupRequest.getLastName());
-            user.setPhone(signupRequest.getPhone());
-            user.setEmail(signupRequest.getEmail());
-            user.setUserRole(Role.USER);
+        User user = new User();
+        user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
+        user.setFirstName(signupRequest.getFirstName());
+        user.setLastName(signupRequest.getLastName());
+        user.setPhone(signupRequest.getPhone());
+        user.setEmail(signupRequest.getEmail());
+        user.setUserRole(Role.USER);
 
-            User createdUser = userRepository.save(user);
+        User createdUser = userRepository.save(user);
 
-            Optional<User> createdUserCheck = userRepository.findByEmail(user.getEmail());
-            if (createdUserCheck.isEmpty()) {
-                throw new UserNotVerifiedException("Registration unsuccessful");
-            }
+        Optional<User> createdUserCheck = userRepository.findByEmail(user.getEmail());
+        if (createdUserCheck.isEmpty()) {
+            throw new UserNotVerifiedException("Registration unsuccessful");
+        }
 
         Organisation organisation = new Organisation();
         String orgName = createdUser.getFirstName() + "'s Organisation";
@@ -100,27 +100,28 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         String accessToken = jwtUtils.createJwt.apply(createdUser);
 
-            SuccessResponse successResponse = new SuccessResponse();
-            successResponse.setStatus("success");
-            successResponse.setMessage("Registration Successful");
+        SuccessResponse successResponse = new SuccessResponse();
+        successResponse.setStatus("success");
+        successResponse.setMessage("Registration Successful");
 
-            SignupResponse signupResponse = new SignupResponse();
-            signupResponse.setUserId(createdUser.getUserId());
-            signupResponse.setFirstName(createdUser.getFirstName());
-            signupResponse.setLastName(createdUser.getLastName());
-            signupResponse.setEmail(createdUser.getEmail());
-            signupResponse.setPassword(createdUser.getPassword());
-            signupResponse.setPhone(createdUser.getPhone());
+        SignupResponse signupResponse = new SignupResponse();
+        signupResponse.setUserId(createdUser.getUserId());
+        signupResponse.setFirstName(createdUser.getFirstName());
+        signupResponse.setLastName(createdUser.getLastName());
+        signupResponse.setEmail(createdUser.getEmail());
+        signupResponse.setPassword(createdUser.getPassword());
+        signupResponse.setPhone(createdUser.getPhone());
 
-            DataResponse data = new DataResponse();
-            data.setAccessToken(accessToken);
-            data.setUser(signupResponse);
+        DataResponse data = new DataResponse();
+        data.setAccessToken(accessToken);
+        data.setUser(signupResponse);
 
-            successResponse.setData(data);
+        successResponse.setData(data);
 
-            return successResponse;
+        return successResponse;
 
     }
+
 
     public SuccessResponse logInUser(LoginRequest loginRequest) throws ErrorResponse {
 
@@ -143,7 +144,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 
         String accessToken = jwtUtils.createJwt.apply((User) authentication.getPrincipal());
-//        String accessToken = jwtUtils.createJwt.apply(user);
 
         SuccessResponse successResponse = new SuccessResponse();
         successResponse.setStatus("success");
@@ -171,8 +171,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Transactional()
     public SuccessResponse getUser(Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        log.info("Started in the method");
-        log.info(authentication.getName());
+
 
         String username = authentication.getName();
         User loggedInUser = userRepository.findUserByEmail(username);
@@ -200,6 +199,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         successResponse.setData(data);
 
         return successResponse;
-
     }
+
+
 }

@@ -9,4 +9,6 @@ import java.util.List;
 public interface OrganisationRepository extends JpaRepository<Organisation, Long> {
     List<Organisation> findByUsers(User user);
     Organisation findByUsersAndOrgId(User user, Long orgId);
+
+    Object findAllByUsersContains(User testUser);
 }

@@ -83,7 +83,7 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authRequests -> authRequests
                         .requestMatchers("/auth/register", "/auth/login", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/v3/api-docs.yaml").permitAll()
-                        .requestMatchers("/api/users/{id}").authenticated()
+                        .requestMatchers("/api/users/{id}", "/api/organisations", "/api/organisations/{orgId}","/api/organisations", "/api/organisations/{orgId}/users").authenticated()
                 )
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
