@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
     private final UserServiceImpl userService;
@@ -49,7 +50,7 @@ public class UserController {
         return new ResponseEntity<>(successResponse, HttpStatus.OK);
     }
 
-    @GetMapping("/api/users/{id}")
+    @GetMapping("/users/{id}")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<SuccessResponse> getUsers(@PathVariable Long id){
         SuccessResponse successResponse = userService.getUser(id);

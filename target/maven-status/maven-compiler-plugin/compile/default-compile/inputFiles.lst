@@ -14,6 +14,7 @@
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/model/UserValidator.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/utils/JwtAuthenticationFilter.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/dto/OrgResponse.java
+/Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/controller/AuthController.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/dto/LoginRequest.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/utils/JwtUtils.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/controller/OrganisationController.java
@@ -23,6 +24,7 @@
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/exeption/EmailIsTakenException.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/services/UserService.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/dto/userToOrg/UserReq.java
+/Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/serviceImpl/AuthServiceImpl.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/config/SwaggerConfig.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/enums/Role.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/dto/OrgRequest.java
@@ -30,4 +32,5 @@
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/repository/UserRepository.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/serviceImpl/OrganisationServiceImpl.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/exeption/DefaultExceptionHandler.java
+/Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/services/AuthService.java
 /Users/wikiwoo/Desktop/JavaTuts/UserOrganisationApp/src/main/java/com/chielokacodes/userorgapp/serviceImpl/UserServiceImpl.java
