@@ -34,8 +34,6 @@ public class User implements UserDetails {
     @NonNull
     private String email;
 
-
-
     private String password;
     private String phone;
 
