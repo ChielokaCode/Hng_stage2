@@ -19,6 +19,7 @@ import com.chielokacodes.userorgapp.utils.JwtUtils;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,6 +29,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -65,7 +67,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         Errors validationResponse = userValidator.validateUser(signupRequest);
         if (validationResponse != null) {
+
             return validationResponse; // Return validation errors directly
+        }
+
+        User existingUserByEmail = userRepository.findUserByEmail(signupRequest.getEmail());
+        if (existingUserByEmail != null) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Duplicate email or user ID");
         }
 
         User user = new User();

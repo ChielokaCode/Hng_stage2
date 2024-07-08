@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class UserController {
@@ -28,10 +29,13 @@ public class UserController {
 
         if (response instanceof Errors) {
             // Handle validation errors
-            return ResponseEntity.badRequest().body(((Errors) response).getErrors());
+            return ResponseEntity.unprocessableEntity().body(((Errors) response).getErrors());
         } else if (response instanceof SuccessResponse) {
             // Return success response
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } else if (response instanceof ResponseStatusException){
+            // Handle when duplicate email
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Duplicate email or user ID");
         } else {
             // Handle unexpected case, though ideally shouldn't occur
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unexpected response type");

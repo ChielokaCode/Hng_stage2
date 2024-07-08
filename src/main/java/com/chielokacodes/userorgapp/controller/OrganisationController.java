@@ -43,7 +43,7 @@ public class OrganisationController {
 
         if (response instanceof ErrorResponse) {
             // Handle validation errors
-            return ResponseEntity.badRequest().body(((ErrorResponse) response));
+            return ResponseEntity.unprocessableEntity().body(((ErrorResponse) response));
         } else if (response instanceof SuccessResponse) {
             // Return success response
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
